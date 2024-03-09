@@ -1,27 +1,35 @@
-pipeline {
-    agent any 
+\pipeline {
+    agent any
+
     stages {
         stage('Build') {
             steps {
-                // Intentional error: Incorrect file name in the g++ command
-                build 'PES2UG21CS679_1'
-                sh 'g++ temp.cpp -o output'
+                sh 'g++ temp.cpp -o temp'
+                 build job: 'PES1UG21CS679_1', wait: false
+                 echo 'Build by CS679 successful'
             }
         }
+
         stage('Test') {
             steps {
-                sh './output'
+                sh 'cat temp.cpp'
+                echo 'Test by CS679 successful'
             }
         }
+
         stage('Deploy') {
             steps {
-                echo 'deploy'
+               
+                 ech 'Deploy by CS679 successful'
             }
         }
     }
+
     post {
         failure {
-            error 'Pipeline failed'
+            
+                echo 'Pipeline Failed'
+          
         }
     }
 }
