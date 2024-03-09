@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Intentional error: Incorrect file name in the g++ command
-                build 'PES2UG21CS679-1'
+                build 'PES2UG21CS679_1'
                 sh 'g++ temp.cpp -o output'
             }
         }
